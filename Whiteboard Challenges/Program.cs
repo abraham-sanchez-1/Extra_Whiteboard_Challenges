@@ -11,6 +11,8 @@ namespace Whiteboard_Challenges
         static void Main(string[] args)
         {
 
+            HappyNumbers happy = new HappyNumbers();
+            happy.ProgramRun();
 
         }
     }
