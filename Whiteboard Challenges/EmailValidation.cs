@@ -33,21 +33,20 @@ namespace Whiteboard_Challenges
         public void Validation(string input)
         {
             char[] userEmail = input.ToCharArray();
+            int emailIndexEnd = (userEmail.Count()) - 1;
+            int emailStartToDotCom = emailIndexEnd - 3;
             for (int i = 0; i < userEmail.Count(); i++)
             {
                 if(userEmail[i] == '@')
                 {
                     if (userEmail[i-1] != null)
                     {
-                        for (int x = i; x < userEmail.Count(); x++)
-                        {
                             string charToString;
-                            charToString = new string(userEmail, (userEmail.Count())-3, userEmail.Count());
-                            if (charToString == ".com" ) 
+                            charToString = new string(userEmail, emailStartToDotCom, emailIndexEnd);
+                            if (charToString == ".com" || charToString == ".edu") 
                             {
                                 isEmailValid = true;
-                            }
-                        }
+                            } 
                     }
                 }
             }
