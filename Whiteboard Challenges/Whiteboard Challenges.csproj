@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BriefCaseLock.cs" />
+    <Compile Include="EmailValidation.cs" />
     <Compile Include="HappyNumbers.cs" />
     <Compile Include="NegativeAndPositiveIntGroups.cs" />
     <Compile Include="Palindrome.cs" />
