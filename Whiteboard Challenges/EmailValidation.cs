@@ -11,6 +11,8 @@ namespace Whiteboard_Challenges
         //member validation
         string userInput;
         bool isEmailValid = false;
+        List<string> emailEndings = new List<string>() { "edu", "com", "gov", "org", "net" };
+
         //constructor
         public EmailValidation()
         {
@@ -33,28 +35,32 @@ namespace Whiteboard_Challenges
         public void Validation(string input)
         {
             char[] userEmail = input.ToCharArray();
-            int emailIndexEnd = (userEmail.Count()) - 1;
+            int emailIndexEnd = (userEmail.Count());
             int emailStartToDotCom = emailIndexEnd - 3;
             for (int i = 0; i < userEmail.Count(); i++)
             {
-                if(userEmail[i] == '@')
+                if(userEmail[i] == '@' && i != 0)
                 {
-                    if (userEmail[i-1] != null)
-                    {
-                            string charToString;
-                            charToString = new string(userEmail, emailStartToDotCom, emailIndexEnd);
-                            if (charToString == ".com" || charToString == ".edu") 
+                            for (int j = i + 1; j < userEmail.Count(); j++)
                             {
-                                isEmailValid = true;
-                            } 
-                    }
+                                if (userEmail[j] == '.')
+                                {
+                                    string ending = new string(userEmail.Skip(j + 1).Take(emailIndexEnd - emailStartToDotCom).ToArray());
+                                    if (emailEndings.Contains(ending))
+                                    {
+                                        isEmailValid = true;
+                                    }
+                            break;
+                                }
+                            }
+             break;
                 }
             }
             
         }
         public void MessageToUser()
         {
-            Console.WriteLine("Program has finished running, valid status of email is: {0}", isEmailValid);
+            Console.WriteLine("Program has finished running, validity status of email is: {0}", isEmailValid);
         }
 
 

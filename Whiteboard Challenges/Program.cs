@@ -16,6 +16,7 @@ namespace Whiteboard_Challenges
 
             EmailValidation email = new EmailValidation();
             email.ProgramRun();
+            Console.ReadLine();
 
         }
     }
